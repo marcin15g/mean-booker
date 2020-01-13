@@ -12,7 +12,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get('/', (req, res, next) => {
+app.post('/api/clients', (req, res, next) => {
     res.status(200).json({res: 'Fetched successfuly!'});
 });
 
