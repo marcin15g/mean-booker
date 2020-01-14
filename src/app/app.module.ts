@@ -12,12 +12,14 @@ import { MatButtonModule, MatInputModule } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
 import { HeaderComponent } from './header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { ListClientComponent } from './list-client/list-client.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateClientComponent,
-    HeaderComponent
+    HeaderComponent,
+    ListClientComponent
   ],
   imports: [
     BrowserModule,

@@ -13,12 +13,19 @@ export class ClientsService {
 
   constructor(private http: HttpClient) { }
 
+  getClientsUpdateListener() {
+    return this.clientsUpdated.asObservable();
+  }
+
   addClient(newClient: Client) {
     this.http.post('http://localhost:3000/api/clients', {name: newClient.name, surname: newClient.surname})
       .subscribe((res) => {
-        console.log(res);
         this.clients.push(newClient);
         this.clientsUpdated.next([...this.clients]);
       });
+  }
+
+  getClients() {
+    
   }
 }
