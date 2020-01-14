@@ -15,15 +15,16 @@ export class CreateClientComponent implements OnInit {
   ngOnInit() {
   }
 
+
   onSubmit(newClientForm: NgForm) {
     if(newClientForm.invalid) {
-      console.error('Invalid data in the form!');
       return;
     } else {
       const newClient: Client = {
         id: null,
         name: newClientForm.value.name,
-        surname: newClientForm.value.surname
+        surname: newClientForm.value.surname,
+        email: newClientForm.value.email
       }
       this.clientsService.addClient(newClient);
     }

@@ -3,12 +3,14 @@
         <mat-form-field>
             <mat-label>Name</mat-label>
             <input matInput name='name' ngModel required #name='ngModel'>
-            <mat-error *ngIf='name.invalid'>Please enter your name</mat-error>
         </mat-form-field>
         <mat-form-field>
             <mat-label>Surname</mat-label>
             <input matInput name='surname' ngModel required #surname='ngModel'>
-            <mat-error *ngIf='surname.invalid'>Please enter your surname</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput name='email' ngModel required #email='ngModel'>
         </mat-form-field>
         <div class="flex">
             <span></span>

@@ -3,16 +3,17 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-import { AppComponent } from './app.component';
-import { CreateClientComponent } from './create-client/create-client.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 //Material imports
-import { MatButtonModule, MatInputModule } from '@angular/material';
+import { MatButtonModule, MatInputModule, MatExpansionModule } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
 import { HeaderComponent } from './header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
+
+
 import { ListClientComponent } from './list-client/list-client.component';
+import { AppComponent } from './app.component';
+import { CreateClientComponent } from './create-client/create-client.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -29,9 +30,8 @@ import { ListClientComponent } from './list-client/list-client.component';
     MatButtonModule, 
     MatInputModule,
     MatCardModule,
-    MatToolbarModule
-
-
+    MatToolbarModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

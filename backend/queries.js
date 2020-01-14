@@ -10,7 +10,7 @@ const pool = new Pool({
 const getClients = (req, res) => {
     pool.query('SELECT * FROM clients ORDER BY id ASC', (error, results) => {
         if(error) throw error;
-        res.status(200).json(results.rows);
+        res.status(200).json({message: 'Clients fetched!', clientsArr: results.rows});
     });
 };
 

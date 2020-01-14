@@ -1,1 +1,12 @@
-<p>list-client works!</p>
+<mat-accordion>
+    <mat-expansion-panel *ngFor='let client of clients'>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <p>{{ client.name }} {{ client.surname }}</p>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-action-row>
+            <button mat-raised-button color='accent'>DELETE</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+</mat-accordion>

@@ -26,6 +26,10 @@ export class ClientsService {
   }
 
   getClients() {
-    
+    this.http.get<{message: string, clientsArr: Client[]}>('http://localhost:3000/api/clients', )
+      .subscribe((res) => {
+        this.clients = res.clientsArr;
+        this.clientsUpdated.next([...this.clients]);
+      })
   }
 }
