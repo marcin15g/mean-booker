@@ -14,6 +14,20 @@ const getClients = (req, res) => {
     });
 };
 
+const createClient = (req, res) => {
+    const newClient = {
+        name: req.body.name,
+        surname: req.body.surname,
+        email: req.body.email
+    };
+    console.log(newClient);
+    pool.query('INSERT INTO clients (name, surname, email) VALUES ($1, $2, $3)',[newClient.name, newClient.surname, newClient.email], (error, result) => {
+        if(error) throw error;
+        res.status(201).json({message: 'Client added!'});
+    });
+};
+
 module.exports = {
-    getClients
+    getClients,
+    createClient
 }

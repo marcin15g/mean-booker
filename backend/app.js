@@ -14,12 +14,6 @@ app.use((req, res, next) => {
 });
 
 app.get('/api/clients', db.getClients);
-
-
-
-app.post('/api/clients', (req, res, next) => {
-    res.status(200).json({res: 'Fetched successfuly!'});
-});
-
+app.post('/api/clients', db.createClient);
 
 module.exports = app;

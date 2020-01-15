@@ -18,11 +18,12 @@ export class ClientsService {
   }
 
   addClient(newClient: Client) {
-    this.http.post('http://localhost:3000/api/clients', {name: newClient.name, surname: newClient.surname})
+    this.http.post<{message: string}>('http://localhost:3000/api/clients', {name: newClient.name, surname: newClient.surname, email: newClient.email})
       .subscribe((res) => {
+        console.log(res.message);
         this.clients.push(newClient);
         this.clientsUpdated.next([...this.clients]);
-      });
+      }); 
   }
 
   getClients() {
