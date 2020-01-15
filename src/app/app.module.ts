@@ -15,13 +15,15 @@ import { AppComponent } from './app.component';
 import { CreateClientComponent } from './create-client/create-client.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
+import { ListRoomsComponent } from './list-rooms/list-rooms.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateClientComponent,
     HeaderComponent,
-    ListClientComponent
+    ListClientComponent,
+    ListRoomsComponent
   ],
   imports: [
     BrowserModule,
