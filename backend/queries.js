@@ -13,21 +13,28 @@ const getClients = (req, res) => {
         res.status(200).json({message: 'Clients fetched!', clientsArr: results.rows});
     });
 };
-
 const createClient = (req, res) => {
     const newClient = {
         name: req.body.name,
         surname: req.body.surname,
         email: req.body.email
     };
-    console.log(newClient);
     pool.query('INSERT INTO clients (name, surname, email) VALUES ($1, $2, $3)',[newClient.name, newClient.surname, newClient.email], (error, result) => {
         if(error) throw error;
         res.status(201).json({message: 'Client added!'});
     });
 };
 
+const getRooms = (req, res) => {
+    pool.query('SELECT * FROM rooms ORDER BY id ASC', (error, results) => {
+        if(error) throw error;
+        res.status(200).json({message: 'Rooms fetched!', roomsArr: results.rows});
+    });
+};
+
 module.exports = {
     getClients,
-    createClient
+    createClient,
+    
+    getRooms
 }

@@ -13,7 +13,13 @@ app.use((req, res, next) => {
     next();
 });
 
+app.get('/', (req,res) => {
+    res.status(200).send('Server is working!');
+});
+
 app.get('/api/clients', db.getClients);
 app.post('/api/clients', db.createClient);
+
+app.get('/api/rooms', db.getRooms);
 
 module.exports = app;

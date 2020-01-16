@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Room } from '../models/room.model';
+import { RoomsService } from '../rooms.service';
 
 @Component({
   selector: 'app-list-rooms',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListRoomsComponent implements OnInit {
 
-  constructor() { }
+  constructor( public roomsService: RoomsService ) { }
+
+  private rooms: Room[] = [];
+  private roomSub: Subscription;
 
   ngOnInit() {
+    this.roomsService.getRooms();
+    this.roomSub = this.roomsService.getRoomsUpdateListener()
+      .subscribe((rooms) => {
+        this.rooms = rooms;
+      });
+  };
+
+  ngOnDestroy() {
+    this.roomSub.unsubscribe();
   }
 
 }
