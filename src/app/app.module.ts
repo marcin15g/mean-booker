@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 //Material imports
-import { MatButtonModule, MatInputModule, MatExpansionModule } from '@angular/material';
+import { MatButtonModule, MatInputModule, MatExpansionModule, MatGridListModule } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
 import { HeaderComponent } from './header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -35,7 +35,8 @@ import { ListRoomsComponent } from './list-rooms/list-rooms.component';
     MatCardModule,
     MatToolbarModule,
     MatExpansionModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

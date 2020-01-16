@@ -1,0 +1,21 @@
+mat-card {
+    margin: 15px auto;
+    width: 50%;
+}
+.available {
+    color: rgb(0, 255, 0);
+}
+.not-available {
+    color: red;
+}
+
+mat-card-title > span {
+    float: right;
+}
+mat-card-actions {
+    display: flex;
+    margin-bottom: 0 !important;
+}
+.spacer {
+    flex: 1 1 auto;
+}

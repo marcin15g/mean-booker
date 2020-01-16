@@ -20,6 +20,7 @@ export class ListRoomsComponent implements OnInit {
     this.roomSub = this.roomsService.getRoomsUpdateListener()
       .subscribe((rooms) => {
         this.rooms = rooms;
+        console.log(this.rooms);
       });
   };
 
