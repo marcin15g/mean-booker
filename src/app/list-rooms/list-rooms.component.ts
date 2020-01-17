@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Room } from '../models/room.model';
 import { RoomsService } from '../rooms.service';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ReservationService } from '../reservation.service';
 
 @Component({
   selector: 'app-list-rooms',
@@ -10,19 +12,39 @@ import { RoomsService } from '../rooms.service';
 })
 export class ListRoomsComponent implements OnInit {
 
-  constructor( public roomsService: RoomsService ) { }
+  constructor( public roomsService: RoomsService, public reservationService: ReservationService, public route: ActivatedRoute, public router: Router ) { }
 
   private rooms: Room[] = [];
   private roomSub: Subscription;
+  private mode = 'list';
+          activeUser = null;
 
   ngOnInit() {
+      if(this.route.snapshot.routeConfig.path === 'select-room') {
+        this.mode = 'select';
+        //TODO
+        // if(this.activeUser === null) {
+        //   console.error('PLEASE FILL USER INFO FIRST');
+        //   this.router.navigateByUrl('/');
+        // }
+    }
+
     this.roomsService.getRooms();
     this.roomSub = this.roomsService.getRoomsUpdateListener()
       .subscribe((rooms) => {
         this.rooms = rooms;
-        console.log(this.rooms);
       });
   };
+
+  onReserve(room: Room) {
+    if(this.mode === 'list') {
+      console.error('PLEASE FILL USER INFO FIRST');
+      this.router.navigateByUrl('/');
+    } else {
+      console.log(this.activeUser);
+      console.log(room);
+    }    
+  }
 
   ngOnDestroy() {
     this.roomSub.unsubscribe();

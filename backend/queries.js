@@ -19,9 +19,9 @@ const createClient = (req, res) => {
         surname: req.body.surname,
         email: req.body.email
     };
-    pool.query('INSERT INTO clients (name, surname, email) VALUES ($1, $2, $3)',[newClient.name, newClient.surname, newClient.email], (error, result) => {
+    pool.query('INSERT INTO clients (name, surname, email) VALUES ($1, $2, $3) RETURNING id',[newClient.name, newClient.surname, newClient.email], (error, result) => {
         if(error) throw error;
-        res.status(201).json({message: 'Client added!'});
+        res.status(201).json({message: 'Client added!', result: result.rows});
     });
 };
 

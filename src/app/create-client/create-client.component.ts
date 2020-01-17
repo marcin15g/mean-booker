@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ClientsService } from '../clients.service';
 import { Client } from '../models/client.model';
+import { Router } from '@angular/router';
+import { ReservationService } from '../reservation.service';
 
 @Component({
   selector: 'app-create-client',
@@ -10,7 +12,7 @@ import { Client } from '../models/client.model';
 })
 export class CreateClientComponent implements OnInit {
 
-  constructor(public clientsService: ClientsService) { }
+  constructor(public clientsService: ClientsService, public reservationService: ReservationService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -27,6 +29,7 @@ export class CreateClientComponent implements OnInit {
         email: newClientForm.value.email
       }
       this.clientsService.addClient(newClient);
+      this.router.navigateByUrl('/select-room');
     }
   }
 

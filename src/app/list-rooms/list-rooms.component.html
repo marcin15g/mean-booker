@@ -7,6 +7,6 @@
     <mat-card-content>{{room.beds}}</mat-card-content>
     <mat-card-actions>
         <span class="spacer"></span>
-        <button mat-stroked-button color='primary' [disabled]='!room.available'>BOOK THIS ROOM</button>
+        <button mat-stroked-button color='primary' [disabled]='!room.available' (click)="onReserve(room)">BOOK THIS ROOM</button>
     </mat-card-actions>
 </mat-card>
