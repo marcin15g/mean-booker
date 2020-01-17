@@ -24,7 +24,7 @@ export class ClientsService {
       .subscribe((response) => {
         this.clients.push(newClient);
         this.clientsUpdated.next([...this.clients]);
-        this.reservationService.setActiveUser(response.result[0].id);
+        this.reservationService.setActiveUserId(response.result[0].id);
         resolve();
       }); 
     });

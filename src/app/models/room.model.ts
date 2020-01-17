@@ -1,5 +1,5 @@
 export interface Room {
-    id: string,
+    id: number,
     number: string,
     beds: number,
     available: boolean

@@ -21,14 +21,11 @@ export class ListRoomsComponent implements OnInit {
 
   ngOnInit() {
       this.activeUser = this.reservationService.getActiveUser();
-      console.log(this.activeUser);
       if(this.route.snapshot.routeConfig.path === 'select-room') {
         this.mode = 'select';
         if(this.activeUser === null) {
           console.error('PLEASE FILL USER INFO FIRST');
           this.router.navigateByUrl('/');
-        } else {
-          console.log(this.activeUser);
         }
     }
 
@@ -44,8 +41,8 @@ export class ListRoomsComponent implements OnInit {
       console.error('PLEASE FILL USER INFO FIRST');
       this.router.navigateByUrl('/');
     } else {
-      console.log(this.activeUser);
-      console.log(room);
+      this.reservationService.setActiveRoomId(room.id);
+      this.router.navigateByUrl('/reservation');
     }    
   }
 
