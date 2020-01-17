@@ -28,8 +28,10 @@ export class CreateClientComponent implements OnInit {
         surname: newClientForm.value.surname,
         email: newClientForm.value.email
       }
-      this.clientsService.addClient(newClient);
-      this.router.navigateByUrl('/select-room');
+      this.clientsService.addClient(newClient)
+      .then(() => {
+        this.router.navigateByUrl('/select-room');
+      });  
     }
   }
 

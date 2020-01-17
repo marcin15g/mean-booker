@@ -19,11 +19,15 @@ export class ClientsService {
   }
 
   addClient(newClient: Client) {
-    this.http.post<{message: string, result: any}>('http://localhost:3000/api/clients', {name: newClient.name, surname: newClient.surname, email: newClient.email})
+    return new Promise((resolve, reject) => {
+      this.http.post<{message: string, result: any}>('http://localhost:3000/api/clients', {name: newClient.name, surname: newClient.surname, email: newClient.email})
       .subscribe((response) => {
         this.clients.push(newClient);
         this.clientsUpdated.next([...this.clients]);
+        this.reservationService.setActiveUser(response.result[0].id);
+        resolve();
       }); 
+    });
   }
 
   getClients() {

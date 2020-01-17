@@ -5,9 +5,16 @@ import { Injectable } from '@angular/core';
 })
 export class ReservationService {
 
-  private activeUserId :number = null;
+  private activeUser :number = null;
 
   constructor() { }
 
+  setActiveUser(userId: number) {
+    this.activeUser = userId;
+  }
+
+  getActiveUser() {
+    return this.activeUser;
+  }
 
 }

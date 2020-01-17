@@ -20,13 +20,16 @@ export class ListRoomsComponent implements OnInit {
           activeUser = null;
 
   ngOnInit() {
+      this.activeUser = this.reservationService.getActiveUser();
+      console.log(this.activeUser);
       if(this.route.snapshot.routeConfig.path === 'select-room') {
         this.mode = 'select';
-        //TODO
-        // if(this.activeUser === null) {
-        //   console.error('PLEASE FILL USER INFO FIRST');
-        //   this.router.navigateByUrl('/');
-        // }
+        if(this.activeUser === null) {
+          console.error('PLEASE FILL USER INFO FIRST');
+          this.router.navigateByUrl('/');
+        } else {
+          console.log(this.activeUser);
+        }
     }
 
     this.roomsService.getRooms();
