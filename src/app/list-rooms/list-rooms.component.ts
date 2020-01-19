@@ -20,7 +20,7 @@ export class ListRoomsComponent implements OnInit {
           activeUser = null;
 
   ngOnInit() {
-      this.activeUser = this.reservationService.getActiveUser();
+      this.activeUser = this.reservationService.getActiveUserId();
       if(this.route.snapshot.routeConfig.path === 'select-room') {
         this.mode = 'select';
         if(this.activeUser === null) {

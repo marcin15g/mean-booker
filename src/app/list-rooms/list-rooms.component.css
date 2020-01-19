@@ -18,3 +18,13 @@ mat-card-actions {
 .spacer {
     flex: 1 1 auto;
 }
+img {
+    height: 150px;
+    margin-right: 10px;
+}
+mat-card-content {
+    display: flex;
+}
+mat-card-content > span {
+    font-size: 20px;
+}

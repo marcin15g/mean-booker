@@ -1,10 +1,14 @@
-<mat-card *ngFor='let room of rooms'>
+<mat-card *ngFor='let room of rooms; index as i'>
     <mat-card-title><span>Room #{{room.number}}</span></mat-card-title>
     <mat-card-subtitle>
         <span *ngIf='room.available' class="available">Room available</span>
         <span *ngIf='!room.available' class="not-available">Room not available</span>
     </mat-card-subtitle>
-    <mat-card-content>{{room.beds}}</mat-card-content>
+    <mat-card-content>
+        <span>Number of beds: {{room.beds}}</span>
+        <div class="spacer"></div>
+        <img src="assets/img/{{i+1}}.jpg" alt="room picture">
+    </mat-card-content>
     <mat-card-actions>
         <span class="spacer"></span>
         <button mat-stroked-button color='primary' [disabled]='!room.available' (click)="onReserve(room)">BOOK THIS ROOM</button>

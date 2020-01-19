@@ -1,0 +1,24 @@
+#room {
+    width: 45%;
+}
+#client {
+    width: 45%;
+}
+#main {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #bac5ff;
+}
+.spacer {
+    flex: 1 1 auto;
+}
+button {
+    width: 100%;
+    margin-top: 20px;
+}
+mat-card-title {
+    text-align: center;
+}
+img {
+    width: 100%;
+}

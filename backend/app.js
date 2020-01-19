@@ -19,7 +19,9 @@ app.get('/', (req,res) => {
 
 app.get('/api/clients', db.getClients);
 app.post('/api/clients', db.createClient);
-
+app.get('/api/clients/:id', db.getClientById);
+app.get('/api/rooms/:id', db.getRoomById);
 app.get('/api/rooms', db.getRooms);
+
 
 module.exports = app;
