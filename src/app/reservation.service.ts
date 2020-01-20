@@ -18,18 +18,6 @@ export class ReservationService {
 
   constructor(private http: HttpClient) { }
 
-  getReservationsUpdateListener() {
-    return this.reservationUpdated.asObservable();
-  }
-
-  getReservations() {
-    this.http.get<{message: string, reservationArr: Reservation[]}>("http://localhost:3000/api/reservations")
-    .subscribe((res) => {
-      this.reservations = res.reservationArr;
-      this.reservationUpdated.next([...this.reservations]);
-    });
-  };
-
   getValidationCode() {
     return this.validationCode;
   }
@@ -68,4 +56,25 @@ export class ReservationService {
       });
   }
 
+  getReservationsUpdateListener() {
+    return this.reservationUpdated.asObservable();
+  }
+
+  getReservations() {
+    this.http.get<{message: string, reservationArr: Reservation[]}>("http://localhost:3000/api/reservations")
+    .subscribe((res) => {
+      this.reservations = res.reservationArr;
+      this.reservationUpdated.next([...this.reservations]);
+    });
+  };
+
+  deleteReservation(deleteId: number, roomId: number) {
+    this.http.delete('http://localhost:3000/api/reservations/' + deleteId + '/' + roomId)
+    .subscribe((res) => {
+      const updatedList = this.reservations.filter(reservation => reservation.id !== deleteId);
+      this.reservations = updatedList;
+      console.log(updatedList);
+      this.reservationUpdated.next([...this.reservations]);
+    })
+  }
 }

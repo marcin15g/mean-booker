@@ -20,9 +20,11 @@ export class ListReservationsComponent implements OnInit {
     this.reservationsSub = this.reservationService.getReservationsUpdateListener()
     .subscribe((reservations) => {
       this.reservations = reservations;
-      console.log(this.reservations);
     });
+  }
 
+  deleteReservation(reservationId: number, roomNumber: string) {
+    this.reservationService.deleteReservation(reservationId, roomNumber);
   }
 
   ngOnDestroy() {

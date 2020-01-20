@@ -12,7 +12,7 @@
       Email: {{reservation.email}}<br>
       Room: {{reservation.number}}
       <mat-action-row>
-          <button mat-raised-button color='warn'>DELETE RESERVATION</button>
+          <button mat-raised-button color='warn' (click)='deleteReservation(reservation.id,reservation.number)'>DELETE RESERVATION</button>
       </mat-action-row>
     </mat-expansion-panel>
 </mat-accordion>

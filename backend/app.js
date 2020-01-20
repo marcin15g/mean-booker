@@ -4,6 +4,7 @@ const db = require('./queries');
 
 const app = express();
 
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
@@ -24,6 +25,7 @@ app.get('/api/rooms/:id', db.getRoomById);
 app.get('/api/rooms', db.getRooms);
 app.post('/api/reservations', db.createReservation);
 app.get('/api/reservations', db.getReservations);
+app.delete('/api/reservations/:id/:room', db.deleteReservation);
 
 
 module.exports = app;

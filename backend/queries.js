@@ -5,7 +5,8 @@ const connection = mysql.createConnection({
     host: 'sql2.freesqldatabase.com',
     user: 'sql2319750',
     password: 'pM6*pA5!',
-    database: 'sql2319750'
+    database: 'sql2319750',
+    multipleStatements: true
 });
 
 connection.connect((err) => {
@@ -57,9 +58,21 @@ const createReservation = (req, res) => {
 };
 
 const getReservations = (req, res) => {
-    connection.query('SELECT c.name, c.surname, c.email, ro.number, r.code FROM reservations r JOIN clients c ON c.id = r.client_id JOIN rooms ro ON ro.id = r.room_id', (error, results) => {
+    connection.query('SELECT r.id, c.name, c.surname, c.email, ro.number, r.code FROM reservations r JOIN clients c ON c.id = r.client_id JOIN rooms ro ON ro.id = r.room_id', (error, results) => {
         if(error) throw error;
         res.status(200).json({message: 'Reservations fetched!', reservationArr: results});
+    })
+}
+
+const deleteReservation = (req, res) => {
+    const id = parseInt(req.params.id);
+    const room = parseInt(req.params.room);
+    connection.query('DELETE FROM reservations WHERE id = ?', [id], (error, result) => {
+        if(error) throw error;
+        connection.query('UPDATE rooms SET available = true WHERE number = ?', [room], (error, result) => {
+            if(error) throw error;
+        })
+        res.status(200).json({message: 'Reservation deleted!'});
     })
 }
 
@@ -70,5 +83,6 @@ module.exports = {
     getRoomById,
     getRooms,
     createReservation,
-    getReservations
+    getReservations,
+    deleteReservation
 }
