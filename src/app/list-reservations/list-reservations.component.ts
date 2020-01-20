@@ -23,7 +23,7 @@ export class ListReservationsComponent implements OnInit {
     });
   }
 
-  deleteReservation(reservationId: number, roomNumber: string) {
+  deleteReservation(reservationId: number, roomNumber: number) {
     this.reservationService.deleteReservation(reservationId, roomNumber);
   }
 
