@@ -53,8 +53,14 @@ const getRoomById = (req, res) => {
 const getRooms = (req, res) => {
     connection.query('SELECT * FROM rooms ORDER BY id ASC', (error, results) => {
         if(error) throw error;
-        console.log(results);
         res.status(200).json({message: 'Rooms fetched!', roomsArr: results});
+    });
+};
+
+const createReservation = (req, res) => {
+    connection.query('INSERT INTO reservations (client_id, room_id, code) VALUES (?,?,?)',[req.body.userId,req.body.roomId,req.body.code], (error, result) => {
+        if(error) throw error;
+        res.status(201).json({message: 'Reservation uploaded!'});
     });
 };
 
@@ -63,5 +69,6 @@ module.exports = {
     createClient,
     getClientById,
     getRoomById,
-    getRooms
+    getRooms,
+    createReservation
 }

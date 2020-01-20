@@ -4,6 +4,7 @@ import { CreateClientComponent } from './create-client/create-client.component';
 import { ListClientComponent } from './list-client/list-client.component';
 import { ListRoomsComponent } from './list-rooms/list-rooms.component';
 import { ReservationComponent } from './reservation/reservation.component';
+import { FinalComponent } from './final/final.component';
 
 
 const routes: Routes = [
@@ -11,7 +12,8 @@ const routes: Routes = [
     {path: 'clients', component: ListClientComponent},
     {path: 'rooms', component: ListRoomsComponent},
     {path: 'select-room', component: ListRoomsComponent},
-    {path: 'reservation', component: ReservationComponent}
+    {path: 'reservation', component: ReservationComponent},
+    {path: 'finalize', component: FinalComponent}
 ];
 
 @NgModule({

@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { ListRoomsComponent } from './list-rooms/list-rooms.component';
 import { ReservationComponent } from './reservation/reservation.component';
+import { FinalComponent } from './final/final.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ReservationComponent } from './reservation/reservation.component';
     HeaderComponent,
     ListClientComponent,
     ListRoomsComponent,
-    ReservationComponent
+    ReservationComponent,
+    FinalComponent
   ],
   imports: [
     BrowserModule,
