@@ -52,7 +52,6 @@ export class ReservationService {
       }
       this.http.post<{message: string}>('http://localhost:3000/api/reservations', {userId: this.activeUserId, roomId: this.activeRoomId, code: this.validationCode})
       .subscribe((res) => {
-        console.log(res);
       });
   }
 
@@ -73,7 +72,6 @@ export class ReservationService {
     .subscribe((res) => {
       const updatedList = this.reservations.filter(reservation => reservation.id !== deleteId);
       this.reservations = updatedList;
-      console.log(updatedList);
       this.reservationUpdated.next([...this.reservations]);
     })
   }
