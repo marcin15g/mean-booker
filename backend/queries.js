@@ -1,50 +1,60 @@
 const Pool = require('pg').Pool;
-const pool = new Pool({
-    user: 'me',
-    host: 'localhost',
-    database: 'api',
-    password: 'password',
-    port: 5432
+const mysql = require('mysql');
+
+const connection = mysql.createConnection({
+    host: 'sql2.freesqldatabase.com',
+    user: 'sql2319750',
+    password: 'pM6*pA5!',
+    database: 'sql2319750'
 });
 
+connection.connect((err) => {
+    if(err) throw err;
+    console.log('Connected to MySQL!');
+})
+
+// const pool = new Pool({
+//     user: 'me',
+//     host: 'localhost',
+//     database: 'api',
+//     password: 'password',
+//     port: 5432
+// });
+
 const getClients = (req, res) => {
-    pool.query('SELECT * FROM clients ORDER BY id ASC', (error, results) => {
+    connection.query('SELECT * FROM clients ORDER BY id ASC', (error, results) => {
         if(error) throw error;
-        res.status(200).json({message: 'Clients fetched!', clientsArr: results.rows});
+        res.status(200).json({message: 'Clients fetched!', clientsArr: results});
     });
 };
 const createClient = (req, res) => {
-    const newClient = {
-        name: req.body.name,
-        surname: req.body.surname,
-        email: req.body.email
-    };
-    pool.query('INSERT INTO clients (name, surname, email) VALUES ($1, $2, $3) RETURNING id',[newClient.name, newClient.surname, newClient.email], (error, result) => {
+    connection.query('INSERT INTO clients (name, surname, email) VALUES (?,?,?)',[req.body.name,req.body.surname,req.body.email], (error, result) => {
         if(error) throw error;
-        res.status(201).json({message: 'Client added!', result: result.rows});
+        res.status(201).json({message: 'Client added!', result: result.insertId});
     });
 };
 
 const getClientById = (req, res) => {
     const id = parseInt(req.params.id);
-    pool.query('SELECT * FROM clients WHERE id = $1', [id] , (error, results) => {
+    connection.query('SELECT * FROM clients WHERE id = ?', [id] , (error, results) => {
         if(error) throw error;
-        res.status(200).json(results.rows)
+        res.status(200).json(results)
     });
 };
 
 const getRoomById = (req, res) => {
     const id = parseInt(req.params.id);
-    pool.query('SELECT * FROM rooms WHERE id = $1', [id] , (error, results) => {
+    connection.query('SELECT * FROM rooms WHERE id = ?', [id] , (error, results) => {
         if(error) throw error;
-        res.status(200).json(results.rows)
+        res.status(200).json(results);
     });
 };
 
 const getRooms = (req, res) => {
-    pool.query('SELECT * FROM rooms ORDER BY id ASC', (error, results) => {
+    connection.query('SELECT * FROM rooms ORDER BY id ASC', (error, results) => {
         if(error) throw error;
-        res.status(200).json({message: 'Rooms fetched!', roomsArr: results.rows});
+        console.log(results);
+        res.status(200).json({message: 'Rooms fetched!', roomsArr: results});
     });
 };
 

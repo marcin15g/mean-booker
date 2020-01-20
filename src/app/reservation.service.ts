@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { stringify } from 'querystring';
 import { Client } from './models/client.model';
 import { Subject } from 'rxjs';
 import { Room } from './models/room.model';

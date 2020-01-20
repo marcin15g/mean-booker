@@ -20,6 +20,7 @@ export class RoomsService {
   getRooms() {
     this.http.get<{message: string, roomsArr: Room[]}>('http://localhost:3000/api/rooms')
       .subscribe((res) => {
+        console.log(res);
         this.rooms = res.roomsArr;
         this.roomsUpdated.next([...this.rooms]);
       });
