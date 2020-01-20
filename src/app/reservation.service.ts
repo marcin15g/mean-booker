@@ -16,6 +16,10 @@ export class ReservationService {
 
   constructor(private http: HttpClient) { }
 
+  getValidationCode() {
+    return this.validationCode;
+  }
+
   setActiveUserId(userId: number) {
     this.activeUserId = userId;
   }
