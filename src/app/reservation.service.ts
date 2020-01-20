@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Client } from './models/client.model';
 import { Subject } from 'rxjs';
 import { Room } from './models/room.model';
+import { Reservation } from './models/reservation.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +13,22 @@ export class ReservationService {
   private activeUserId: number = null;
   private activeRoomId: number = null;
   private validationCode: string = '';
-  private userUpdated = new Subject<Client>();
+  private reservations: Reservation[] = [];
+  private reservationUpdated = new Subject<Reservation[]>();
 
   constructor(private http: HttpClient) { }
+
+  getReservationsUpdateListener() {
+    return this.reservationUpdated.asObservable();
+  }
+
+  getReservations() {
+    this.http.get<{message: string, reservationArr: Reservation[]}>("http://localhost:3000/api/reservations")
+    .subscribe((res) => {
+      this.reservations = res.reservationArr;
+      this.reservationUpdated.next([...this.reservations]);
+    });
+  };
 
   getValidationCode() {
     return this.validationCode;
@@ -30,10 +44,6 @@ export class ReservationService {
 
   getActiveUserId() {
     return this.activeUserId;
-  }
-
-  getUserUpdateListener() {
-    return this.userUpdated.asObservable();
   }
 
   getActiveUser() {

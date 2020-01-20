@@ -56,11 +56,19 @@ const createReservation = (req, res) => {
     });
 };
 
+const getReservations = (req, res) => {
+    connection.query('SELECT c.name, c.surname, c.email, ro.number, r.code FROM reservations r JOIN clients c ON c.id = r.client_id JOIN rooms ro ON ro.id = r.room_id', (error, results) => {
+        if(error) throw error;
+        res.status(200).json({message: 'Reservations fetched!', reservationArr: results});
+    })
+}
+
 module.exports = {
     getClients,
     createClient,
     getClientById,
     getRoomById,
     getRooms,
-    createReservation
+    createReservation,
+    getReservations
 }

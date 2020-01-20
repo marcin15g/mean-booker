@@ -1,1 +1,18 @@
-<p>list-reservations works!</p>
+<mat-accordion>
+    <mat-expansion-panel *ngFor='let reservation of reservations'>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+        <span>#{{reservation.code}}</span> 
+          
+        </mat-panel-title>
+        <mat-panel-description>
+            {{reservation.name}} {{reservation.surname}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      Email: {{reservation.email}}<br>
+      Room: {{reservation.number}}
+      <mat-action-row>
+          <button mat-raised-button color='warn'>DELETE RESERVATION</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+</mat-accordion>

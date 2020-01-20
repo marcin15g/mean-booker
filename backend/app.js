@@ -23,6 +23,7 @@ app.get('/api/clients/:id', db.getClientById);
 app.get('/api/rooms/:id', db.getRoomById);
 app.get('/api/rooms', db.getRooms);
 app.post('/api/reservations', db.createReservation);
+app.get('/api/reservations', db.getReservations);
 
 
 module.exports = app;
