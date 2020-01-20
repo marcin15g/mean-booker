@@ -12,3 +12,8 @@ ul {
 .spacer {
     flex: 1 1 auto;
 }
+
+#title {
+    margin-right: 20px;
+    font-size: 50px;
+}

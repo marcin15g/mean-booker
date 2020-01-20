@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 //Material imports
-import { MatButtonModule, MatInputModule, MatExpansionModule, MatGridListModule } from '@angular/material';
+import { MatButtonModule, MatInputModule, MatExpansionModule, MatGridListModule, MatListModule } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
 import { HeaderComponent } from './header/header.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -18,6 +18,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ListRoomsComponent } from './list-rooms/list-rooms.component';
 import { ReservationComponent } from './reservation/reservation.component';
 import { FinalComponent } from './final/final.component';
+import { ListReservationsComponent } from './list-reservations/list-reservations.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FinalComponent } from './final/final.component';
     ListClientComponent,
     ListRoomsComponent,
     ReservationComponent,
-    FinalComponent
+    FinalComponent,
+    ListReservationsComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,8 @@ import { FinalComponent } from './final/final.component';
     MatToolbarModule,
     MatExpansionModule,
     AppRoutingModule,
-    MatGridListModule
+    MatGridListModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

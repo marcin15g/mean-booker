@@ -2,3 +2,6 @@ mat-card-content {
     text-align: center;
     font-size: 60px;
 }
+mat-card-title {
+    text-align: center;
+}

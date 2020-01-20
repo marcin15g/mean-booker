@@ -1,15 +1,6 @@
-<mat-accordion>
-    <mat-expansion-panel *ngFor='let client of clients'>
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                <p>{{ client.name }} {{ client.surname }}</p>
-            </mat-panel-title>
-            <mat-panel-description>
-                <p>{{ client.email }}</p>
-            </mat-panel-description>
-        </mat-expansion-panel-header>
-        <mat-action-row>
-            <button mat-raised-button color='accent'>DELETE</button>
-        </mat-action-row>
-    </mat-expansion-panel>
-</mat-accordion>
+<mat-list>
+    <div *ngFor='let client of clients'>
+        <mat-list-item><span>{{ client.name }} {{ client.surname }}</span><span class="spacer"></span><span>{{ client.email }}</span></mat-list-item>
+        <mat-divider></mat-divider>
+    </div>    
+</mat-list>

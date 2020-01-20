@@ -7,7 +7,7 @@
     <mat-card-content>
         <span>Number of beds: {{room.beds}}</span>
         <div class="spacer"></div>
-        <img src="assets/img/{{i+1}}.jpg" alt="room picture">
+        <img src="assets/img/{{(i%3) + 1}}.jpg" alt="room picture">
     </mat-card-content>
     <mat-card-actions>
         <span class="spacer"></span>
