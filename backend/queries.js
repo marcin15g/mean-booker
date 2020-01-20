@@ -53,6 +53,9 @@ const getRooms = (req, res) => {
 const createReservation = (req, res) => {
     connection.query('INSERT INTO reservations (client_id, room_id, code) VALUES (?,?,?)',[req.body.userId,req.body.roomId,req.body.code], (error, result) => {
         if(error) throw error;
+        connection.query('UPDATE rooms SET available = false WHERE id = ?',[req.body.roomId], (error, result) => {
+            if(error) throw error;
+        })
         res.status(201).json({message: 'Reservation uploaded!'});
     });
 };
