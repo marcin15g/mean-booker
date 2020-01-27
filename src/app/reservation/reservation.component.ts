@@ -56,7 +56,8 @@ export class ReservationComponent implements OnInit {
   }
 
   confirmReservation() {
-    console.log('XD');
+    this.reservationService.uploadReservation();
+    this.router.navigateByUrl('finalize');
   }
 
 }
